@@ -1,4 +1,5 @@
-import html
+#import html
+from HTMLParser import HTMLParser
 import re
 
 from tomd import Tomd
@@ -48,13 +49,15 @@ REFERENCES
 class ArticleFormatter(object):
 
     def __init__(self, content, references=False):
-        self.content = content
+        #self.content = content
+        self.content = HTMLParser().unescape(content).encode("utf-8")
         self.refs = References() if references else None
 
     def render(self):
         endnotes = ''
         if self.refs:
-            self.content = self.refs.process(html.unescape(self.content))
+            #self.content = self.refs.process(html.unescape(self.content))
+            self.content = self.refs.process(self.content)
             endnotes = '\n' + self.refs.endnotes
 
         return Tomd(self.content).markdown + endnotes
