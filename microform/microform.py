@@ -25,7 +25,7 @@ class Reader(object):
             print('No content')
             return
 
-        article = ArticleFormatter(result['content'], refs)
+        article = ArticleFormatter(result, refs)
 
         self._display(article.render())
 
