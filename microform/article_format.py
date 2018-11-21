@@ -46,15 +46,15 @@ class References(object):
 class ArticleFormatter(object):
 
     def __init__(self, content, references=False):
-        #self.content = content
-        self.content = HTMLParser().unescape(content).encode("utf-8")
+        self.url = result['url'].encode("utf-8")
+        self.title = HTMLParser().unescape(result['title']).encode("utf-8")
+        self.content = HTMLParser().unescape(result['content']).encode("utf-8")
         self.refs = References() if references else None
 
     def render(self):
         endnotes = ''
         if self.refs:
-            #self.content = self.refs.process(html.unescape(self.content))
             self.content = self.refs.process(self.content)
             endnotes = '\n' + self.refs.endnotes
 
-        return Tomd(self.content).markdown + endnotes
+        return self.title + '\n' + self.url + '\n' + Tomd(self.content).markdown + endnotes
