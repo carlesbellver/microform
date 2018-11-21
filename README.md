@@ -20,7 +20,7 @@ Other configuration options include:
 
 ## Requirements
 
-- Python 3
+- Python 3 \[adapted to Python 2.7]
 - requests
 - requests-cache
 - tomd
