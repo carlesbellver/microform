@@ -11,10 +11,7 @@ class References(object):
         self.references = []
         self.pattern = r'<a.*?href="(.*?)".*?>(.*?)<\/a>'
         self.content = ''
-        self.endnotes = """
-REFERENCES
-==========\n
-"""
+        self.endnotes = ''
 
     def process(self, content):
         new_string, n = re.subn(self.pattern,
