@@ -45,7 +45,7 @@ class References(object):
 
 class ArticleFormatter(object):
 
-    def __init__(self, content, references=False):
+    def __init__(self, result, references=False):
         self.url = result['url'].encode("utf-8")
         self.title = HTMLParser().unescape(result['title']).encode("utf-8")
         self.content = HTMLParser().unescape(result['content']).encode("utf-8")
